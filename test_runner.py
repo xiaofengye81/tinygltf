@@ -23,7 +23,7 @@ success = []
 
 def run(filename):
 
-    print("Testing: " + filename)
+    print(f"Testing: {filename}")
     cmd = ["./loader_example", filename]
     try:
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -47,7 +47,7 @@ def test():
         if os.path.isdir(p):
             for k in kinds:
                 targetDir = os.path.join(p, k)
-                g = glob.glob(targetDir + "/*.gltf") + glob.glob(targetDir + "/*.glb")
+                g = glob.glob(f"{targetDir}/*.gltf") + glob.glob(f"{targetDir}/*.glb")
                 for gltf in g:
                     run(gltf)
 
@@ -60,7 +60,7 @@ def main():
     print("Failed  : {0}".format(len(failed)))
 
     for fail in failed:
-        print("FAIL: " + fail)
+        print(f"FAIL: {fail}")
 
 if __name__ == '__main__':
     main()
